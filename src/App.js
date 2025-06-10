@@ -52,7 +52,7 @@ const App = () => {
             <div>
                 <Menu />
                 <Routes>
-                    <Route path="/" element={<Navigate to="/body" replace />} />
+                    <Route path="/" element={<Body />} />
                     <Route path="/body" element={<Body />} />
                     <Route path="/pokedex" element={<Pokedex />} />
                     <Route path="/ataques" element={<Ataque />} />
