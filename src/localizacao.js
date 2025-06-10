@@ -79,72 +79,82 @@ const LocationsList = () => {
     );
   }
 
-  return (
-    <div className="container">
-      <h1>Localizações</h1>
-      <input
-        className="pesquisa"
-        placeholder="Buscar localização..."
-        value={searchText}
-        onChange={(e) => filterLocations(e.target.value)}
-      />
+return (
+  <div className="container">
+    <h1>Localizações</h1>
 
-      <div className="listContainer">
-        {visibleLocations.map((item) => (
-          <div
-            key={item.id}
-            className="item"
-            onClick={() => openLocationModal(item)}
-          >
-            <div className="infoContainer">
-              <p className="nome">{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</p>
-              <p className="info">Região: {item.region?.name || 'Desconhecida'}</p>
-              <p className="info">Áreas: {item.areas.length}</p>
-              <p className="info">Jogos Relacionados: {item.game_indices.length}</p>
-            </div>
+    <input
+      className="pesquisa"
+      placeholder="Buscar localização..."
+      value={searchText}
+      onChange={(e) => filterLocations(e.target.value)}
+    />
+
+    <div className="listContainer">
+      {visibleLocations.map((item) => (
+        <div
+          key={item.id}
+          className="item"
+          onClick={() => openLocationModal(item)}
+        >
+          <div className="infoContainer">
+            <p className="nome">{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</p>
+            <p className="info">Região: {item.region?.name || 'Desconhecida'}</p>
+            <p className="info">Áreas: {item.areas.length}</p>
+            <p className="info">Jogos Relacionados: {item.game_indices.length}</p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
+    </div>
 
-      {visibleCount < filteredLocations.length && (
+    {/* Botão Carregar Mais */}
+    {visibleLocations.length < filteredLocations.length && (
+      <div style={{ textAlign: 'center', margin: '20px 0' }}>
         <button className="carregarMais" onClick={loadMore}>
           Carregar mais
         </button>
-      )}
+      </div>
+    )}
 
-      {modalVisible && selectedLocation && (
-        <div className="modalOverlay" onClick={closeModal}>
-          <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-            <h2 className="modalTitle">Detalhes da Localização</h2>
-            <p><strong>Nome:</strong> {selectedLocation.name.charAt(0).toUpperCase() + selectedLocation.name.slice(1)}</p>
-            <p><strong>Região:</strong> {selectedLocation.region?.name || 'Desconhecida'}</p>
-            <p><strong>Áreas:</strong> {selectedLocation.areas.length}</p>
-            <p><strong>Jogos Relacionados:</strong> {selectedLocation.game_indices.length}</p>
-            <p><strong>Pokémons Encontrados:</strong></p>
-            {selectedLocation.pokemon_encounters && selectedLocation.pokemon_encounters.length > 0 ? (
-              <ul>
-                {selectedLocation.pokemon_encounters.map((encounter, index) => (
-                  <li key={index}>{encounter.pokemon.name}</li>
-                ))}
-              </ul>
-            ) : (
-              <p>Nenhum Pokémon encontrado.</p>
-            )}
-            <p><strong>Itens Encontrados:</strong></p>
-            {selectedLocation.items && selectedLocation.items.length > 0 ? (
-              <ul>
-                {selectedLocation.items.map((item, index) => (
-                  <li key={index}>{item.name}</li>
-                ))}
-              </ul>
-            ) : (
-              <p>Nenhum item encontrado.</p>
-            )}
-            <button onClick={closeModal}>Fechar</button>
-          </div>
+    {/* Modal de Detalhes */}
+    {modalVisible && selectedLocation && (
+      <div className="modalOverlay" onClick={closeModal}>
+        <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+          <h2 className="modalTitle">Detalhes da Localização</h2>
+          <p><strong>Nome:</strong> {selectedLocation.name.charAt(0).toUpperCase() + selectedLocation.name.slice(1)}</p>
+          <p><strong>Região:</strong> {selectedLocation.region?.name || 'Desconhecida'}</p>
+          <p><strong>Áreas:</strong> {selectedLocation.areas.length}</p>
+          <p><strong>Jogos Relacionados:</strong> {selectedLocation.game_indices.length}</p>
+
+          <p><strong>Pokémons Encontrados:</strong></p>
+          {selectedLocation.pokemon_encounters && selectedLocation.pokemon_encounters.length > 0 ? (
+            <ul>
+              {selectedLocation.pokemon_encounters.map((encounter, index) => (
+                <li key={index}>{encounter.pokemon.name}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>Nenhum Pokémon encontrado.</p>
+          )}
+
+          <p><strong>Itens Encontrados:</strong></p>
+          {selectedLocation.items && selectedLocation.items.length > 0 ? (
+            <ul>
+              {selectedLocation.items.map((item, index) => (
+                <li key={index}>{item.name}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>Nenhum item encontrado.</p>
+          )}
+
+          <button onClick={closeModal}>Fechar</button>
         </div>
-      )}
-    </div>
+      </div>
+    )}
+  </div>
+);
+
   );
 };
 
