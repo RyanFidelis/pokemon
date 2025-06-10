@@ -118,9 +118,9 @@ const LocationsList = () => {
       )}
 
       {modalVisible && selectedLocation && (
-        <div className="modalOverlay" onClick={closeModal}>
-          <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-            <h2 className="modalTitle">Detalhes da Localização</h2>
+        <div className="modalOverlay-loc" onClick={closeModal}>
+          <div className="modalContent-loc" onClick={(e) => e.stopPropagation()}>
+            <h2 className="modalTitulo-loc">Detalhes da Localização</h2>
             <p><strong>Nome:</strong> {capitalize(selectedLocation.name)}</p>
             <p><strong>Região:</strong> {selectedLocation.region?.name || 'Desconhecida'}</p>
             <p><strong>Áreas:</strong> {selectedLocation.areas.length}</p>
@@ -148,7 +148,7 @@ const LocationsList = () => {
               <p>Nenhum item encontrado.</p>
             )}
 
-            <button className="fecharModal" onClick={closeModal}>Fechar</button>
+            <button className="fecharModal-loc" onClick={closeModal}>Fechar</button>
           </div>
         </div>
       )}
