@@ -11,7 +11,7 @@ const Body = () => {
                 Divirta-se e que a sua jornada seja cheia de aventuras! 🌟
             </p>
             <img
-                src={`${process.env.PUBLIC_URL}/Pokemons.png`}
+                src="https://ryanfidelis.github.io/pokemon/Pokemons.png"
                 alt="pokemon"
                 className="bem-vindo-img"
             />
