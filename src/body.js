@@ -12,7 +12,7 @@ const Body = () => {
             </p>
             <img
                 src={`${process.env.PUBLIC_URL}/Pokemons.png`}
-                alt="Pokemons"
+                alt="pokemon"
                 className="bem-vindo-img"
             />
         </div>
