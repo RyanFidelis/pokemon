@@ -10,8 +10,7 @@ const Body = () => {
                 conhecer mais sobre esse universo incrível. Navegue, descubra e aproveite o conteúdo especial que preparamos para você.
                 Divirta-se e que a sua jornada seja cheia de aventuras! 🌟
             </p>
-        <img src={`${process.env.PUBLIC_URL}/Pokemons.png`} alt="pokemon" className="bem-vindo-img" />
-
+        <img src={`${process.env.PUBLIC_URL}/pokemon/Pokemons.png`} alt="pokemon" />
         </div>
     );
 };
